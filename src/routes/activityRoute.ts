@@ -16,8 +16,8 @@ router.post("/create", userAuthorization, createActivity);
 router.patch("/update/:id", userAuthorization, updateActivity);
 router.delete("/delete/:id", userAuthorization, deleteActivity);
 router.get("/all", userAuthorization, getAllActivities);
-router.get("/:id", userAuthorization, getActivity);
 router.post("/book/:activityId", userAuthorization, bookActivity);
 router.get("/bookings", userAuthorization, userBookings);
+router.get("/:id", userAuthorization, getActivity);
 
 export default router;
