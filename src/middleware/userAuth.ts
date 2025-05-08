@@ -17,7 +17,7 @@ export async function userAuthorization(
 
     const verifiedToken = jwt.verify(
       accessToken,
-      process.env.JWTSecretKey!
+      process.env.ACCESSTOKENSECRET!
     ) as JwtPayload;
     console.log(verifiedToken);
     console.log(verifiedToken.userId);
