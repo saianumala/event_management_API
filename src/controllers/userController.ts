@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 const userCreateSchema = z.object({
   name: z.string(),
   mobileNumber: z.string(),
+  role: z.string(),
   email: z.string(),
   password: z.string().min(8),
 });
@@ -19,11 +20,13 @@ export async function register(req: Request, res: Response) {
       res.status(400).json({ message: "all fields are required" });
       return;
     }
-    const { name, mobileNumber, email, password } = userCreateSchemaResponse;
+    const { name, mobileNumber, role, email, password } =
+      userCreateSchemaResponse;
     const hashedPassword = await bcryptjs.hash(password, 9);
     const user = await User.create({
       email: email,
       name: name,
+      role: role,
       mobileNumber: mobileNumber,
       password: hashedPassword,
     });
